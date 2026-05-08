@@ -24,7 +24,7 @@ const Form = ({setStatus}) => {
             return;
         }
 
-        const response = await axios.post ('https://ud-pager-default-rtdb.asia-southeast1.firebasedatabase.app/message.json', // Note: to send data to firebase
+        const response = await axios.post (import.meta.env.FIREBASE_DB_URL, // Note: to send data to firebase
             {
                 name: name,
                 message :message

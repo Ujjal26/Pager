@@ -95,7 +95,7 @@ body{
     color: rgba(255, 255,255, 0.35);
 }
 .form-input input{
-    width: 90px;
+    width: 100%;
     font-size: 18px;
     color: white;
     border: none;

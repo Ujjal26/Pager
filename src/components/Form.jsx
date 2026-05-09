@@ -3,40 +3,39 @@ import React, { useState } from 'react'
 
 import axios from 'axios';
 
-const Form = ({setStatus}) => {
+const Form = ({ setStatus }) => {
     const [name, setName] = useState(''); // Note: to hold the name
     const [message, setMessage] = useState(''); // Note: to hold the message
 
-    const handleNameChange = (e)=>{ // Note: function to hold the name on form input
+    const handleNameChange = (e) => { // Note: function to hold the name on form input
         setName(e.target.value);
     }
-    const handleMessageChange =(e) =>{ // Note: function to hold the message on form input
+    const handleMessageChange = (e) => { // Note: function to hold the message on form input
         setMessage(e.target.value);
     }
-    const handleSubmit=async(e)=>{ // Note: function to submit the form and other validations
+    const handleSubmit = async (e) => { // Note: function to submit the form and other validations
         e.preventDefault();
 
-        const formName= name.trim();             // Note: to remove extra spaces
-        const formMessage= message.trim();       // Note: to remove extra spaces
+        const formName = name.trim();             // Note: to remove extra spaces
+        const formMessage = message.trim();       // Note: to remove extra spaces
 
-        if(formName==='' || formMessage === ''){ // Note: if name or message is empty
+        if (formName === '' || formMessage === '') { // Note: if name or message is empty
             alert('Please enter your name and message !!!');
             return;
         }
 
-        const response = await axios.post (import.meta.env.FIREBASE_DB_URL, // Note: to send data to firebase
-            {
+        const response = await axios.post('https://ud-pager-default-rtdb.asia-southeast1.firebasedatabase.app/message.json', // Note: to send data to firebase
+            { 
                 name: name,
-                message :message
-            }
-        )
+                message: message
+            });
         setStatus(true);
         setName(''); // Note: to clear the form after each enter
         setMessage(''); // Note: to clear the form after each enter
     }
 
     return (
-        <div className="form-container"> 
+        <div className="form-container">
             <form>
                 <div className="form-header">
                     Send message to Ujjal.

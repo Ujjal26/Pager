@@ -6,7 +6,7 @@ const Messagelist = ({status}) => {
     const [messages, setMessages] = useState([]);
 
     if(status){ // Note: to get the data from firebase after everytime the form is submitted
-        axios.get(import.meta.env.FIREBASE_DB_URL)
+        axios.get('https://ud-pager-default-rtdb.asia-southeast1.firebasedatabase.app/message.json')
         .then(response =>{
             console.log(response.data);
             let messagelist =[];
